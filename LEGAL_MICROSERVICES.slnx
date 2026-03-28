@@ -8,4 +8,5 @@
   <Project Path="src/LEGAL.Compliance.Api/LEGAL.Compliance.Api.csproj" />
   <Project Path="src/LEGAL.Contenzioso.Api/LEGAL.Contenzioso.Api.csproj" />
   <Project Path="src/LEGAL.AI.Api/LEGAL.AI.Api.csproj" />
+  <Project Path="src/LEGAL.AnalisiRischio.Api/LEGAL.AnalisiRischio.Api.csproj" />
 </Solution>
