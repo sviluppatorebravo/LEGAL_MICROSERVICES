@@ -1,0 +1,5 @@
+using LEGAL.Shared.Models;using LEGAL.Shared.Enums;
+namespace LEGAL.Scadenze.Api.Models;
+public class Scadenza:BaseEntity{public TipoScadenza Tipo{get;set;}public string Titolo{get;set;}="";public string? Descrizione{get;set;}public DateTime DataScadenza{get;set;}public int GiorniPreavviso{get;set;}=7;public PrioritaScadenza Priorita{get;set;}=PrioritaScadenza.Media;public StatoScadenza Stato{get;set;}=StatoScadenza.Pendente;public string? EntitaRiferimento{get;set;}public string? EntitaId{get;set;}public string? ResponsabileId{get;set;}}
+public class CreateScadenzaRequest{public TipoScadenza Tipo{get;set;}public string Titolo{get;set;}="";public string? Descrizione{get;set;}public DateTime DataScadenza{get;set;}public int GiorniPreavviso{get;set;}=7;public PrioritaScadenza Priorita{get;set;}public StatoScadenza Stato{get;set;}public string? EntitaRiferimento{get;set;}public string? EntitaId{get;set;}public string? ResponsabileId{get;set;}}
+public class UpdateScadenzaRequest:CreateScadenzaRequest{}
