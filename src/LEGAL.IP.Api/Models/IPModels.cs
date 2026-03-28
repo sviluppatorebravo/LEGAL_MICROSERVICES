@@ -1,0 +1,7 @@
+using LEGAL.Shared.Models;using LEGAL.Shared.Enums;
+namespace LEGAL.IP.Api.Models;
+public class ProprietaIntellettuale:BaseEntity{public TipoIP Tipo{get;set;}public string Titolo{get;set;}="";public string? Descrizione{get;set;}public string? NumeroRegistrazione{get;set;}public StatoIP Stato{get;set;}=StatoIP.InRegistrazione;public DateTime? DataRegistrazione{get;set;}public DateTime? DataScadenza{get;set;}public string? Territorio{get;set;}public string? Titolare{get;set;}public string? Note{get;set;}public string? Tags{get;set;}}
+public class LicenzaIP:BaseEntity{public Guid IPId{get;set;}public string? Licenziatario{get;set;}public TipoLicenzaIP Tipo{get;set;}public DateTime? DataInizio{get;set;}public DateTime? DataFine{get;set;}public decimal? Royalty{get;set;}public string? Condizioni{get;set;}}
+public class CreateIPRequest{public TipoIP Tipo{get;set;}public string Titolo{get;set;}="";public string? Descrizione{get;set;}public string? NumeroRegistrazione{get;set;}public StatoIP Stato{get;set;}public DateTime? DataRegistrazione{get;set;}public DateTime? DataScadenza{get;set;}public string? Territorio{get;set;}public string? Titolare{get;set;}public string? Note{get;set;}public string? Tags{get;set;}}
+public class UpdateIPRequest:CreateIPRequest{}
+public class CreateLicenzaIPRequest{public Guid IPId{get;set;}public string? Licenziatario{get;set;}public TipoLicenzaIP Tipo{get;set;}public DateTime? DataInizio{get;set;}public DateTime? DataFine{get;set;}public decimal? Royalty{get;set;}public string? Condizioni{get;set;}}
