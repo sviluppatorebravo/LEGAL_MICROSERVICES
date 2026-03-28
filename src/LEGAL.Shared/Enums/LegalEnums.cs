@@ -1,0 +1,17 @@
+namespace LEGAL.Shared.Enums;
+public enum EntityStatus{Active=0,Deleted=1}
+public enum TipoContratto{NDA=0,Licenza=1,Fornitura=2,Lavoro=3,Publishing=4,Altro=5}
+public enum StatoContratto{Bozza=0,InRevisione=1,Firmato=2,Attivo=3,Scaduto=4,Risolto=5}
+public enum TipoRinnovo{Automatico=0,Manuale=1,No=2}
+public enum TipoClausola{Standard=0,Custom=1,Penale=2}
+public enum TipoIP{Brevetto=0,Marchio=1,Copyright=2,TradeSecret=3,Licenza=4}
+public enum StatoIP{Registrato=0,InRegistrazione=1,Scaduto=2,Contestato=3}
+public enum TipoLicenzaIP{Esclusiva=0,NonEsclusiva=1,Sublicenza=2}
+public enum TipoScadenza{ContrattoScadenza=0,RinnovoPolizza=1,Adempimento=2,UdienzaProcesso=3,Deposito=4,Altro=5}
+public enum PrioritaScadenza{Alta=0,Media=1,Bassa=2}
+public enum StatoScadenza{Pendente=0,InCorso=1,Completata=2,Scaduta=3}
+public enum TipoAdempimento{GDPR=0,FiscaleItaliano=1,Lavoro=2,Ambientale=3,SettorialeGaming=4,Altro=5}
+public enum FrequenzaAdempimento{Annuale=0,Semestrale=1,Trimestrale=2,Mensile=3,UnaTantum=4}
+public enum StatoAdempimento{Conforme=0,NonConforme=1,InValutazione=2,NonApplicabile=3}
+public enum TipoContenzioso{Civile=0,Lavoro=1,Amministrativo=2,Penale=3,Arbitrato=4}
+public enum StatoContenzioso{Aperto=0,InCorso=1,Sospeso=2,Chiuso=3,Vinto=4,Perso=5,Transatto=6}

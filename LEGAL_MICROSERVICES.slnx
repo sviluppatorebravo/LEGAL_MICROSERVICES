@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="src/LEGAL.Shared/LEGAL.Shared.csproj" />
+  <Project Path="src/LEGAL.Gateway/LEGAL.Gateway.csproj" />
+  <Project Path="src/LEGAL.Auth.Api/LEGAL.Auth.Api.csproj" />
+  <Project Path="src/LEGAL.Contratti.Api/LEGAL.Contratti.Api.csproj" />
+  <Project Path="src/LEGAL.IP.Api/LEGAL.IP.Api.csproj" />
+  <Project Path="src/LEGAL.Scadenze.Api/LEGAL.Scadenze.Api.csproj" />
+  <Project Path="src/LEGAL.Compliance.Api/LEGAL.Compliance.Api.csproj" />
+  <Project Path="src/LEGAL.Contenzioso.Api/LEGAL.Contenzioso.Api.csproj" />
+  <Project Path="src/LEGAL.AI.Api/LEGAL.AI.Api.csproj" />
+</Solution>
