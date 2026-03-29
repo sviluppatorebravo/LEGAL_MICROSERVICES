@@ -15,6 +15,8 @@ start_service "scadenze" "LEGAL.Scadenze.Api" 5224
 start_service "compliance" "LEGAL.Compliance.Api" 5225
 start_service "contenzioso" "LEGAL.Contenzioso.Api" 5226
 start_service "ai" "LEGAL.AI.Api" 5227
+start_service "analisi-rischio" "LEGAL.AnalisiRischio.Api" 5228
+start_service "analisi-contratti" "LEGAL.AnalisiContratti.Api" 5229
 echo -e "${YELLOW}[...] Starting Web UI on port 3200${NC}"
 cd "$SCRIPT_DIR/legal-web"
 if [ ! -d "node_modules" ]; then npm install; fi
