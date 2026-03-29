@@ -1,0 +1,21 @@
+using Dapper;using Microsoft.Data.Sqlite;using LEGAL.AnalisiContratti.Api.Models;
+namespace LEGAL.AnalisiContratti.Api.Repositories;
+public class AnalisiContrattiRepository{private readonly string _cs;public AnalisiContrattiRepository(string cs)=>_cs=cs;private SqliteConnection C()=>new(_cs);
+
+public async Task InitializeAsync(){using var c=C();await c.OpenAsync();await c.ExecuteAsync(@"
+CREATE TABLE IF NOT EXISTS analisi_contratto(Id TEXT PRIMARY KEY,ContrattoId TEXT NOT NULL,ContrattoTitolo TEXT NOT NULL,DataAnalisi TEXT NOT NULL,RischioGlobale TEXT NOT NULL DEFAULT 'Basso',PunteggioRischio REAL NOT NULL DEFAULT 0,ClausoleRischiose INTEGER NOT NULL DEFAULT 0,ClausoleMancanti INTEGER NOT NULL DEFAULT 0,Raccomandazioni TEXT,AnalizzatoDa TEXT,CreatedAt TEXT NOT NULL,UpdatedAt TEXT NOT NULL,Status INTEGER NOT NULL DEFAULT 0);
+CREATE INDEX IF NOT EXISTS IX_analisi_contratto_ContrattoId ON analisi_contratto(ContrattoId);
+CREATE TABLE IF NOT EXISTS clausole_rilevate(Id TEXT PRIMARY KEY,AnalisiId TEXT NOT NULL,Tipo TEXT NOT NULL DEFAULT 'Altro',Testo TEXT NOT NULL,Rischio TEXT NOT NULL DEFAULT 'Basso',Note TEXT,Pagina INTEGER NOT NULL DEFAULT 0,CreatedAt TEXT NOT NULL,UpdatedAt TEXT NOT NULL,Status INTEGER NOT NULL DEFAULT 0);
+CREATE INDEX IF NOT EXISTS IX_clausole_rilevate_AnalisiId ON clausole_rilevate(AnalisiId);");}
+
+public async Task<AnalisiContratto> CreateAnalisiAsync(AnalisiContratto e){using var c=C();await c.ExecuteAsync("INSERT INTO analisi_contratto(Id,ContrattoId,ContrattoTitolo,DataAnalisi,RischioGlobale,PunteggioRischio,ClausoleRischiose,ClausoleMancanti,Raccomandazioni,AnalizzatoDa,CreatedAt,UpdatedAt,Status)VALUES(@Id,@ContrattoId,@ContrattoTitolo,@DataAnalisi,@RischioGlobale,@PunteggioRischio,@ClausoleRischiose,@ClausoleMancanti,@Raccomandazioni,@AnalizzatoDa,@CreatedAt,@UpdatedAt,@Status)",e);return e;}
+public async Task<AnalisiContratto?> GetByIdAsync(Guid id){using var c=C();return await c.QueryFirstOrDefaultAsync<AnalisiContratto>("SELECT * FROM analisi_contratto WHERE Id=@Id AND Status=0",new{Id=id.ToString()});}
+public async Task<List<AnalisiContratto>> GetByContrattoAsync(Guid cid){using var c=C();return(await c.QueryAsync<AnalisiContratto>("SELECT * FROM analisi_contratto WHERE ContrattoId=@C AND Status=0 ORDER BY DataAnalisi DESC",new{C=cid.ToString()})).ToList();}
+public async Task<List<AnalisiContratto>> GetRecentiAsync(int limit=50){using var c=C();return(await c.QueryAsync<AnalisiContratto>("SELECT * FROM analisi_contratto WHERE Status=0 ORDER BY DataAnalisi DESC LIMIT @L",new{L=limit})).ToList();}
+public async Task<List<AnalisiContratto>> GetContrattiRischiosiAsync(){using var c=C();return(await c.QueryAsync<AnalisiContratto>("SELECT * FROM analisi_contratto WHERE Status=0 AND RischioGlobale IN ('Alto','Critico') ORDER BY PunteggioRischio DESC")).ToList();}
+public async Task<object> GetStatisticheRischioAsync(){using var c=C();var t=await c.ExecuteScalarAsync<int>("SELECT COUNT(*) FROM analisi_contratto WHERE Status=0");var basso=await c.ExecuteScalarAsync<int>("SELECT COUNT(*) FROM analisi_contratto WHERE RischioGlobale='Basso' AND Status=0");var medio=await c.ExecuteScalarAsync<int>("SELECT COUNT(*) FROM analisi_contratto WHERE RischioGlobale='Medio' AND Status=0");var alto=await c.ExecuteScalarAsync<int>("SELECT COUNT(*) FROM analisi_contratto WHERE RischioGlobale='Alto' AND Status=0");var critico=await c.ExecuteScalarAsync<int>("SELECT COUNT(*) FROM analisi_contratto WHERE RischioGlobale='Critico' AND Status=0");var avg=await c.ExecuteScalarAsync<double?>("SELECT AVG(PunteggioRischio) FROM analisi_contratto WHERE Status=0")??0;return new{Totale=t,Basso=basso,Medio=medio,Alto=alto,Critico=critico,PunteggioMedio=Math.Round(avg,1)};}
+
+// Clausole
+public async Task CreateClausolaAsync(ClausolaRilevata e){using var c=C();await c.ExecuteAsync("INSERT INTO clausole_rilevate(Id,AnalisiId,Tipo,Testo,Rischio,Note,Pagina,CreatedAt,UpdatedAt,Status)VALUES(@Id,@AnalisiId,@Tipo,@Testo,@Rischio,@Note,@Pagina,@CreatedAt,@UpdatedAt,@Status)",e);}
+public async Task<List<ClausolaRilevata>> GetClausoleByAnalisiAsync(Guid analisiId){using var c=C();return(await c.QueryAsync<ClausolaRilevata>("SELECT * FROM clausole_rilevate WHERE AnalisiId=@A AND Status=0 ORDER BY Pagina",new{A=analisiId.ToString()})).ToList();}
+}
