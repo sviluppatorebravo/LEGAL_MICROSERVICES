@@ -6,6 +6,9 @@ const target = isMonolith ? 'http://localhost:5001' : 'http://localhost:5220';
 
 export default defineConfig({
   plugins: [react()],
+  define: {
+    'import.meta.env.VITE_MONOLITH_MODE': JSON.stringify(isMonolith ? 'true' : 'false'),
+  },
   server: {
     port: 3200,
     host: true,
@@ -15,11 +18,9 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: isMonolith
           ? (path) => {
-              const parts = path.split('/');
-              if (parts.length >= 4) {
-                parts.splice(2, 1);
-                parts.splice(1, 1, 'api/legal');
-                return parts.join('/');
+              // Don't rewrite gateway-level endpoints
+              if (path.startsWith('/api/health') || path.startsWith('/api/gateway/')) {
+                return path;
               }
               return path.replace(/^\/api/, '/api/legal');
             }
