@@ -1,6 +1,6 @@
 import { AppShell, NavLink, Group, Title, Badge, ActionIcon, useMantineColorScheme } from '@mantine/core';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { IconHome, IconFileText, IconBulb, IconCalendarEvent, IconShieldCheck, IconGavel, IconRobot, IconSettings, IconSun, IconMoon } from '@tabler/icons-react';
+import { IconHome, IconFileText, IconBulb, IconCalendarEvent, IconShieldCheck, IconGavel, IconRobot, IconSettings, IconSun, IconMoon, IconAlertTriangle, IconFileAnalytics, IconBuildingCommunity } from '@tabler/icons-react';
 const navItems = [
   { icon: IconHome, label: 'Dashboard', path: '/' },
   { icon: IconFileText, label: 'Contratti', path: '/contratti' },
@@ -8,6 +8,9 @@ const navItems = [
   { icon: IconCalendarEvent, label: 'Scadenze', path: '/scadenze' },
   { icon: IconShieldCheck, label: 'Compliance', path: '/compliance' },
   { icon: IconGavel, label: 'Contenzioso', path: '/contenzioso' },
+  { icon: IconAlertTriangle, label: 'Analisi Rischio', path: '/analisi-rischio' },
+  { icon: IconFileAnalytics, label: 'Analisi Contratti', path: '/analisi-contratti' },
+  { icon: IconBuildingCommunity, label: 'Modello 231', path: '/modello-231' },
   { icon: IconRobot, label: 'AI Assistant', path: '/ai' },
   { icon: IconSettings, label: 'Impostazioni', path: '/impostazioni' },
 ];

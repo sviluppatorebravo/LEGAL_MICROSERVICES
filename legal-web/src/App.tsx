@@ -6,6 +6,9 @@ import IPPage from './pages/IPPage';
 import ScadenzePage from './pages/ScadenzePage';
 import CompliancePage from './pages/CompliancePage';
 import ContenziosoPage from './pages/ContenziosoPage';
+import AnalisiRischioPage from './pages/AnalisiRischioPage';
+import AnalisiContrattiPage from './pages/AnalisiContrattiPage';
+import Modello231Page from './pages/Modello231Page';
 import AIPage from './pages/AIPage';
 import SettingsPage from './pages/SettingsPage';
 export default function App() {
@@ -16,6 +19,9 @@ export default function App() {
         <Route path="/scadenze" element={<ScadenzePage />} />
         <Route path="/compliance" element={<CompliancePage />} />
         <Route path="/contenzioso" element={<ContenziosoPage />} />
+        <Route path="/analisi-rischio" element={<AnalisiRischioPage />} />
+        <Route path="/analisi-contratti" element={<AnalisiContrattiPage />} />
+        <Route path="/modello-231" element={<Modello231Page />} />
         <Route path="/ai" element={<AIPage />} />
         <Route path="/impostazioni" element={<SettingsPage />} />
       </Routes></MainLayout>);
