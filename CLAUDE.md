@@ -21,6 +21,9 @@ Gestione legale completa basata su microservizi .NET 10 con frontend React. Cont
 | Compliance | 5225 | Adempimenti normativi, audit |
 | Contenzioso | 5226 | Cause, arbitrati, atti processuali |
 | AI | 5227 | Assistente legale AI |
+| Analisi Rischio | 5228 | Risk scoring, checklist compliance |
+| Analisi Contratti | 5229 | Analisi automatica contratti |
+| Modello 231 | 5230 | D.Lgs 231/2001 compliance organizzativa |
 | Web UI | 3200 | Frontend React |
 
 ## Avvio

@@ -15,3 +15,13 @@ public enum FrequenzaAdempimento{Annuale=0,Semestrale=1,Trimestrale=2,Mensile=3,
 public enum StatoAdempimento{Conforme=0,NonConforme=1,InValutazione=2,NonApplicabile=3}
 public enum TipoContenzioso{Civile=0,Lavoro=1,Amministrativo=2,Penale=3,Arbitrato=4}
 public enum StatoContenzioso{Aperto=0,InCorso=1,Sospeso=2,Chiuso=3,Vinto=4,Perso=5,Transatto=6}
+public enum StatoModello231{Bozza=0,Vigente=1,InRevisione=2,Scaduto=3}
+public enum TipoReato231{ControPubblicaAmministrazione=0,Societari=1,Sicurezza=2,Ambiente=3,Riciclaggio=4,CorruzioneTraprivati=5,Informatici=6,Lavoro=7,Tributari=8}
+public enum LivelloRischio231{Basso=0,Medio=1,Alto=2,Critico=3}
+public enum TipoProtocollo231{Preventivo=0,Detective=1,Correttivo=2}
+public enum FrequenzaProtocollo231{Continuo=0,Giornaliero=1,Settimanale=2,Mensile=3,Trimestrale=4,Annuale=5}
+public enum StatoProtocollo231{Attivo=0,InRevisione=1,Sospeso=2}
+public enum TipoFlussoODV{Segnalazione=0,Report=1,RiunioneODV=2,VerificaPeriodica=3,Altro=4}
+public enum UrgenzaFlussoODV{Normale=0,Urgente=1,Critica=2}
+public enum StatoFlussoODV{Ricevuto=0,InEsame=1,Esaminato=2,Archiviato=3}
+public enum EsitoVerificaODV{Conforme=0,NonConforme=1,Osservazione=2}

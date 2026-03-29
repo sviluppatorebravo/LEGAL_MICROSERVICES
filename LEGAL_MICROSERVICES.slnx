@@ -10,4 +10,5 @@
   <Project Path="src/LEGAL.AI.Api/LEGAL.AI.Api.csproj" />
   <Project Path="src/LEGAL.AnalisiRischio.Api/LEGAL.AnalisiRischio.Api.csproj" />
   <Project Path="src/LEGAL.AnalisiContratti.Api/LEGAL.AnalisiContratti.Api.csproj" />
+  <Project Path="src/LEGAL.Modello231.Api/LEGAL.Modello231.Api.csproj" />
 </Solution>
